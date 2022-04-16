@@ -1,0 +1,40 @@
+<!-- [formGroup] directive links the template with component code -->
+<form [formGroup]="form">
+
+  <div class="form-group">
+    <input
+      type="email"
+      name="email"
+      formControlName="email"
+      placeholder="Email"
+    />
+  </div>
+  
+  <div *ngIf="email.invalid && (email.dirty || email.touched)">
+    Enter valid email
+  </div>
+
+
+  <div class="form-group">
+    <input
+      type="password"
+      name="password"
+      formControlName="password"
+      placeholder="Password"
+    />
+  </div>
+  
+  
+  <div *ngIf="password.errors?.passwordStrength">
+    Your password must have lowercase, UpperCase and numeric character.
+  </div>
+ 
+  <div>
+    <button>Login</button>
+  </div>
+
+  <div>
+    <!-- Display current values of the reactive form-->
+    {{ form.value | json }}
+  </div>
+</form>
